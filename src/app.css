@@ -1,0 +1,11 @@
+#loginFormContainer {
+    background-color: red; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom right, #24334e, #002f73, #496e91, #FFFFFF); /* Standard syntax (must be last) */
+}
+
+#loginForm {
+    margin: 0 auto;
+    width: 600px;
+    height: 100vh;
+    color: #FFFFFF;
+}
