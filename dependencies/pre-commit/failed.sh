@@ -1,0 +1,1 @@
+echo -e "\n\033[1m\e[031mNothing Has Been Committed\e[31m\033[0m"
