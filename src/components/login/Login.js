@@ -17,7 +17,8 @@ export default class Login extends Component {
      */
     constructor(props) {
         super(props)
-        this.state = {value: ''}
+
+        this.state = { value: '' };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,7 +42,9 @@ export default class Login extends Component {
             resolve(data)
         })
             .then(response => response.json())
-            .then(data => {})
+            .then(data => {
+                this.props.onLoginAction()
+            })
 
         event.preventDefault();
     }
@@ -51,7 +54,7 @@ export default class Login extends Component {
             <div id="loginFormContainer">
                 <form id="loginForm" className="d-flex justify-content-center align-items-center">
                     <div className="w-100">
-                        <h3>Welcome to the login page</h3>
+                        <h3>Welcome to the Windows Plus SPC</h3>
                         <div className="form-group">
                             <label>Password</label>
                             <input type="password" className="form-control" placeholder="Enter password"
