@@ -25,10 +25,13 @@ export default class Root extends Component {
         this.onLoginAction = this.onLoginAction.bind(this);
     }
 
+    userDetails = []
+
     /**
      * @description sets the value of the logged in state member
      */
-    onLoginAction = () => {
+    onLoginAction = details => {
+        this.userDetails = details
         this.setState({loggedIn: true});
     }
 
@@ -39,8 +42,8 @@ export default class Root extends Component {
                     <div className="auth-wrapper">
                         <div className="auth-inner">
                             <Switch>
-                                {this.state.loggedIn ? null : <Login onLoginAction={this.onLoginAction}/>}
-                                {this.state.loggedIn ? <MainDashboard/> : null}
+                                {this.state.loggedIn ? null : <Login onLoginAction={this.onLoginAction} />}
+                                {this.state.loggedIn ? <MainDashboard userDetails={this.userDetails}/> : null}
                             </Switch>
                         </div>
                     </div>

@@ -28,14 +28,14 @@ export default class Login extends Component {
      * @description updates the state of the password field to be the value entered by the user
      * @param event the type event storing the user data
      */
-    handleChange(event) { this.setState({value: event.target.value}); }
+    handleChange = event => { this.setState({value: event.target.value}); }
 
     /**
      * @description handles the event when the user clicks on the submit button. A new promise is created which will
      * return staff member details tied to the password entered
      * @param event the click event
      */
-    handleSubmit(event) {
+    handleSubmit = event => {
         new Promise((resolve, reject) => {
             const data = loginService(this.state.value)
 
@@ -43,7 +43,7 @@ export default class Login extends Component {
         })
             .then(response => response.json())
             .then(data => {
-                this.props.onLoginAction()
+                this.props.onLoginAction(data)
             })
 
         event.preventDefault();
