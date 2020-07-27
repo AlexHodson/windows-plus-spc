@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { connectToService } from '../../services/SQLService'
 
 export default class Login extends Component {
     render() {
@@ -11,8 +12,7 @@ export default class Login extends Component {
                             <label>Password</label>
                             <input type="password" className="form-control" placeholder="Enter password"/>
                         </div>
-
-                        <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                        <button onClick={connectToService} className="btn btn-primary btn-block">Submit</button>
                     </div>
                 </form>
             </div>
