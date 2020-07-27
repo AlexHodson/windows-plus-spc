@@ -5,7 +5,8 @@
 
 #loginForm {
     margin: 0 auto;
-    width: 600px;
+    max-width: 480px;
+    padding: 1rem;
     height: 100vh;
     color: #FFFFFF;
 }
