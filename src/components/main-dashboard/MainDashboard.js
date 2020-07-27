@@ -29,7 +29,9 @@ export default class MainDashboard extends Component {
             resolve(data)
         })
             .then(response => response.json())
-            .then(data => {})
+            .then(data => {
+
+            })
     }
 
     render() {

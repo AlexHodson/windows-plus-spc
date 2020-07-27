@@ -11,14 +11,13 @@ export class MainDashboardService {
      * @return {Promise<Response>} a promise containing the account privileges
      */
     retrievePrivileges = userDetails => {
-        return fetch('http://localhost:4000/dashboard/privileges', {
-            method: 'POST',
+        return fetch(`http://localhost:4000/mainDashboard/privileges/${userDetails[0]['Username']}`, {
+            method: 'GET',
             mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ staffID: userDetails.staffID })
+            }
         })
     }
 }
