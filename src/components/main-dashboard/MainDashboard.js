@@ -1,5 +1,7 @@
-import React, { Component } from "react";
-import { MainDashboardService } from '../../services/main-dashboard/MainDashboardService'
+import React, {Component} from "react";
+import {MainDashboardService} from '../../services/main-dashboard/MainDashboardService'
+import {Menu} from "../menu/Menu";
+import Loader from "../loader/Loader";
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
@@ -16,8 +18,12 @@ export default class MainDashboard extends Component {
     constructor(props) {
         super(props)
 
+        this.state = {loading: true}
+
         this.loadPrivileges()
     }
+
+    privileges = []
 
     /**
      * @description creates a new promise which will return a list of the logged in staff members account privileges
@@ -30,13 +36,17 @@ export default class MainDashboard extends Component {
         })
             .then(response => response.json())
             .then(data => {
-
+                this.privileges = data
+                this.setState({loading: false})
             })
     }
 
     render() {
         return (
-            <div className="w-100">
+            <div className="w-100 h-100">
+                {
+                    this.state.loading ? <Loader/> : <Menu privileges={this.privileges}/>
+                }
                 <h3>Dashboard</h3>
             </div>
         );

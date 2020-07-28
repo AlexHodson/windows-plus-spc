@@ -37,18 +37,16 @@ export default class Root extends Component {
 
     render() {
         return (
-            <div>
-                <Router>
-                    <div className="auth-wrapper">
-                        <div className="auth-inner">
-                            <Switch>
-                                {this.state.loggedIn ? null : <Login onLoginAction={this.onLoginAction} />}
-                                {this.state.loggedIn ? <MainDashboard userDetails={this.userDetails}/> : null}
-                            </Switch>
-                        </div>
+            <Router>
+                <div className="auth-wrapper">
+                    <div className="auth-inner">
+                        <Switch>
+                            {this.state.loggedIn ? null : <Login onLoginAction={this.onLoginAction}/>}
+                            {this.state.loggedIn ? <MainDashboard userDetails={this.userDetails}/> : null}
+                        </Switch>
                     </div>
-                </Router>
-            </div>
+                </div>
+            </Router>
         );
     }
 }

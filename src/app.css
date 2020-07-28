@@ -1,3 +1,23 @@
+html,
+body,
+#root,
+.auth-wrapper,
+.auth-inner {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+li a {
+    text-decoration: none;
+    color: black;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
 #loginFormContainer {
     background-color: red; /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom right, #24334e, #002f73, #496e91, #FFFFFF); /* Standard syntax (must be last) */
