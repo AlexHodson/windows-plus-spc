@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { FaSignOutAlt } from 'react-icons/fa';
+import React, {Component} from "react";
+import {FaSignOutAlt} from 'react-icons/fa';
 
-import { MenuLinks } from "./MenuLink";
+import {MenuLinks} from "./MenuLink";
 import './menu.css'
 
 /**
@@ -22,11 +22,23 @@ export class Menu extends Component {
             isOpen: false
         }
 
+        this.props = props
+
         this.menuToggle = this.menuToggle.bind(this);
         this.handleDocumentClick = this.handleDocumentClick.bind(this);
+        this.handleLogOutClick = this.handleLogOutClick.bind(this);
     }
 
     handleDocumentClick(e) {
+    }
+
+    /**
+     * @description handles the click event for when the user clicks the 'log out' button. The method will call the
+     * parent property {@link onLoginAction}
+     * @param e the click event
+     */
+    handleLogOutClick(e) {
+        this.props.onLoginAction([], false)
     }
 
     /**
@@ -55,8 +67,10 @@ export class Menu extends Component {
                     </div>
                     <div className={"actionMenuArea"}>
                         <ul>
-                            <li className={this.state.isOpen ? 'text-left p-3': 'text-center'}>
-                                {this.state.isOpen ? <a className="pr-3">Log Out</a> : null} <FaSignOutAlt/>
+                            <li className={`cursor ${this.state.isOpen ? 'text-left p-3' : 'text-center'}`}
+                                onClick={this.handleLogOutClick}>
+                                {this.state.isOpen ? <a className="pr-3">Log Out</a> :
+                                    null} <FaSignOutAlt/>
                             </li>
                         </ul>
                     </div>

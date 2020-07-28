@@ -28,11 +28,14 @@ export default class Root extends Component {
     userDetails = []
 
     /**
-     * @description sets the value of the logged in state member
+     * @description sets the value of the logged in staff member and the details of the logged in staff member
+     * @param details the staff member details
+     * @param loggedIn whether a staff member is logged in
      */
-    onLoginAction = details => {
+    onLoginAction = (details, loggedIn = true) => {
+        console.log('HERE')
         this.userDetails = details
-        this.setState({loggedIn: true});
+        this.setState({loggedIn: loggedIn});
     }
 
     render() {
@@ -42,7 +45,9 @@ export default class Root extends Component {
                     <div className="auth-inner">
                         <Switch>
                             {this.state.loggedIn ? null : <Login onLoginAction={this.onLoginAction}/>}
-                            {this.state.loggedIn ? <MainDashboard userDetails={this.userDetails}/> : null}
+                            {this.state.loggedIn ?
+                                <MainDashboard userDetails={this.userDetails} onLoginAction={this.onLoginAction}/> :
+                                null}
                         </Switch>
                     </div>
                 </div>

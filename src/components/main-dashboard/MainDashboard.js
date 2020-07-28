@@ -18,6 +18,10 @@ export default class MainDashboard extends Component {
     constructor(props) {
         super(props)
 
+        this.props = props
+
+        this.props.onLoginAction()
+
         this.state = {loading: true}
 
         this.loadPrivileges()
@@ -45,7 +49,7 @@ export default class MainDashboard extends Component {
         return (
             <div className="w-100 h-100">
                 {
-                    this.state.loading ? <Loader/> : <Menu privileges={this.privileges}/>
+                    this.state.loading ? <Loader/> : <Menu privileges={this.privileges} onLoginAction={this.props.onLoginAction}/>
                 }
                 <h3>Dashboard</h3>
             </div>
