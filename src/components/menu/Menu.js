@@ -38,7 +38,7 @@ export class Menu extends Component {
      * @param e the click event
      */
     handleLogOutClick(e) {
-        this.props.onLoginAction([], false)
+        this.props.setLogin([], false)
     }
 
     /**
