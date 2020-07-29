@@ -17,11 +17,11 @@ export default function MainDashboard({userDetails, setUserDetails}) {
     /**
      * @description the hook members exported by the {@link usePrivileges} hook
      */
-    const { privileges } = usePrivileges([], userDetails)
+    const {privileges} = usePrivileges([], userDetails)
     /**
      * @description the hook members exported by the {@link useLoader} hook
      */
-    const { showLoader, setShowLoader } = useLoader(true)
+    const {showLoader, setShowLoader} = useLoader(true)
 
     useEffect(() => {
         if (privileges.length > 0) {
@@ -31,11 +31,15 @@ export default function MainDashboard({userDetails, setUserDetails}) {
 
     return (
         <div className="w-100 h-100">
-
             {showLoader && <Loader/>}
-            {!showLoader && <Menu privileges={privileges} setUserDetails={setUserDetails}/>}
-
-            <h3>Dashboard</h3>
+            <div className="d-flex justify-content-start">
+                <div>
+                    {!showLoader && <Menu privileges={privileges} setUserDetails={setUserDetails}/>}
+                </div>
+                <div>
+                    <h3>Dashboard</h3>
+                </div>
+            </div>
         </div>
     );
 }

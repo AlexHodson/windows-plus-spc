@@ -1,15 +1,21 @@
-
 .menubar {
-    display: block;
-    height: 100vh;
-    width: 74px;
+    position: relative;
     background-color: #24334e;
     box-shadow: 2px 5px 5px 0 rgba(0, 0, 0, 0.12);
-    text-align: center;
+    width: 74px;
+    height: 100vh;
     transition: width 300ms;
 }
 
-.menubar.isopen {
+.menuWrap {
+    display: block;
+    position: fixed;
+    text-align: center;
+    width: 74px;
+    transition: width 300ms;
+}
+
+.menubar.isopen, .menuWrap.isopen {
     width: 210px;
 }
 
@@ -147,6 +153,9 @@
 .actionMenuArea {
     height: 10vh;
     color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 @media screen and (max-width: 420px) {
