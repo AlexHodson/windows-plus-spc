@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { useState } from "react";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 import Login from './../login/Login'
@@ -6,46 +6,25 @@ import MainDashboard from './../main-dashboard/MainDashboard'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
- * @description the {@link Root} class provides the base area for the initial user interface. The main functionality
- * of the class is to switch between the log in page and the main user dashboard
- * @see Component
+ * @description the {@link Root} method provides the base area for the initial user interface. The main functionality
+ * of the method is to switch between the log in page and the main user dashboard
  */
-export default class Root extends Component {
+export default function Root() {
     /**
-     * @description class constructor specifying the optional properties of the parent component
-     * @param props the optional properties
+     * @description the user details state member and a setter method
      */
-    constructor(props) {
-        super(props);
+    const [userDetails, setUserDetails] = useState([])
 
-        this.state = {
-            loggedIn: false,
-        };
-
-        this.onLoginAction = this.onLoginAction.bind(this);
-    }
-
-    /**
-     * @description sets the value of the logged in state member
-     */
-    onLoginAction = () => {
-        this.setState({loggedIn: true});
-    }
-
-    render() {
-        return (
-            <div>
-                <Router>
-                    <div className="auth-wrapper">
-                        <div className="auth-inner">
-                            <Switch>
-                                {this.state.loggedIn ? null : <Login onLoginAction={this.onLoginAction}/>}
-                                {this.state.loggedIn ? <MainDashboard/> : null}
-                            </Switch>
-                        </div>
-                    </div>
-                </Router>
+    return (
+        <Router>
+            <div className="auth-wrapper">
+                <div className="auth-inner">
+                    <Switch>
+                        {userDetails.length === 0 && <Login setUserDetails={setUserDetails} />}
+                        {userDetails.length > 0 && <MainDashboard userDetails={userDetails} setUserDetails={setUserDetails}/> }
+                    </Switch>
+                </div>
             </div>
-        );
-    }
-}
+        </Router>
+    );
+};

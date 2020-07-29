@@ -1,6 +1,6 @@
 import express from 'express'
 import sql from "mssql";
-import { generateCall } from '../util/ConnectionProperty.mjs'
+import { generateCall } from '../../util/ConnectionProperty.mjs'
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ const router = express.Router();
  * @param password the password entered by the user
  * @return {Promise<*>} a promise which contains any staff member details in the database
  */
-const getAccountType = (password) => {
+const getAccountType = password => {
     const parameters = [
         {
             'name': 'codeEntered',
