@@ -6,12 +6,14 @@ import MainDashboard from './../main-dashboard/MainDashboard'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
- * @description the {@link Root} class provides the base area for the initial user interface. The main functionality
- * of the class is to switch between the log in page and the main user dashboard
+ * @description the {@link Root} method provides the base area for the initial user interface. The main functionality
+ * of the method is to switch between the log in page and the main user dashboard
  */
 export default function Root() {
+    /**
+     * @description the user details state member and a setter method
+     */
     const [userDetails, setUserDetails] = useState([])
-    console.log(userDetails)
 
     return (
         <Router>
@@ -25,4 +27,4 @@ export default function Root() {
             </div>
         </Router>
     );
-}
+};

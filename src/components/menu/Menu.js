@@ -1,81 +1,54 @@
-import React, {Component} from "react";
-import {FaSignOutAlt} from 'react-icons/fa';
+import React from "react";
+import { FaSignOutAlt } from 'react-icons/fa';
 
-import {MenuLinks} from "./MenuLink";
+import MenuLinks from "./MenuLink";
+import { useMenu } from "../../hooks/menu/useMenu";
+
 import './menu.css'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
- * @description the {@link Menu} class provides the functionality for the main menu navigation. The class allows the
- * user to enlarge and shrink the main navigation bar
- * @see Comment
- * @see MenuLinks
+ * @description the {@link Menu} method provides the functionality and main user interface for the user's main
+ * navigation menu. The method utilises the {@link MenuLinks} method to build the individual section links
+ * @param setUserDetails a state setter which updates the logged in user details
+ * @param privileges the privileges associated with the logged in user
+ * @return {JSX.Element} the user interface which is ported into another component interface
+ * @constructor
  */
-export class Menu extends Component {
+export default function Menu({ setUserDetails, privileges }) {
     /**
-     * @description class constructor specifying the optional properties passed through by parent components
-     * @param props the optional parameters
+     * @description the hook members exported by the {@link useMenu} hook
      */
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false
-        }
-
-        this.props = props
-
-        this.menuToggle = this.menuToggle.bind(this);
-        this.handleDocumentClick = this.handleDocumentClick.bind(this);
-        this.handleLogOutClick = this.handleLogOutClick.bind(this);
-    }
-
-    handleDocumentClick(e) {
-    }
+    const { open, handleLogOut, handleMenuToggle } = useMenu(false, setUserDetails)
 
     /**
-     * @description handles the click event for when the user clicks the 'log out' button. The method will call the
-     * parent property {@link onLoginAction}
-     * @param e the click event
+     * @description the class name which is added to the user interface elements
+     * @type {string}
      */
-    handleLogOutClick(e) {
-        this.props.setLogin([], false)
-    }
+    let menuStatus = open ? 'isopen' : '';
 
-    /**
-     * @description toggles the open state of the main navigation. When the state is `true`, the main navigation bar
-     * is fully extended.
-     * @param e the click event
-     */
-    menuToggle(e) {
-        e.stopPropagation();
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
-
-    render() {
-        let menuStatus = this.state.isOpen ? 'isopen' : '';
-
-        return (
-            <div ref="root">
-                <div className={`menubar ${menuStatus}`}>
-                    <div className={"mainMenuArea"}>
-                        <MenuLinks privileges={this.props.privileges} menuStatus={menuStatus}/>
-                        <div className="hambclicker" onClick={this.menuToggle}></div>
-                        <div id="hambmenu" className={menuStatus}><span></span><span></span><span></span><span></span>
-                        </div>
-                    </div>
-                    <div className={"actionMenuArea"}>
-                        <ul>
-                            <li className={`cursor ${this.state.isOpen ? 'text-left p-3' : 'text-center'}`}
-                                onClick={this.handleLogOutClick}>
-                                {this.state.isOpen ? <a className="pr-3">Log Out</a> :
-                                    null} <FaSignOutAlt/>
-                            </li>
-                        </ul>
+    return (
+        <div>
+            <div className={`menubar ${menuStatus}`}>
+                <div className={"mainMenuArea"}>
+                    <MenuLinks privileges={privileges} menuStatus={menuStatus}/>
+                    <div className="hambclicker" onClick={handleMenuToggle} />
+                    <div id="hambmenu" className={menuStatus}>
+                        <span/>
+                        <span/>
+                        <span/>
+                        <span/>
                     </div>
                 </div>
+                <div className={"actionMenuArea"}>
+                    <ul>
+                        <li className={`cursor ${open ? 'text-left p-3' : 'text-center'}`}
+                            onClick={handleLogOut}>
+                            {open && <a className="pr-3">Log Out</a>} <FaSignOutAlt/>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
