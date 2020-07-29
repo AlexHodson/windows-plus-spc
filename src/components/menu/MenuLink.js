@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
@@ -9,23 +9,23 @@ import React from "react";
  * @return {JSX.Element} the user interface which is ported int another component interface
  * @constructor
  */
-export default function MenuLinks({ privileges, menuStatus }) {
-    /**
-     * @description an array which contains the user interface nodes for the navigation links
-     */
-    let links = privileges.map((link, i) => {
-            return (
-                <li key={link['columnName']} className="cursor">
-                    <a>{link['columnName'].replace('_', '').replace(/([a-z])([A-Z])/g, '$1 $2')}</a>
-                </li>)
-        }
-    );
+export default function MenuLinks({
+	privileges, menuStatus
+}) {
+	/**
+	 * @description an array which contains the user interface nodes for the navigation links
+	 */
+	const links = privileges.map(link => (
+		<li key={link.columnName} className="cursor">
+			<p>{link.columnName.replace('_', '').replace(/(?<lower>[a-z])(?<upper>[A-Z])/g, '$1 $2')}</p>
+		</li>
+	))
 
-    return (
-        <div className={menuStatus} id='menu'>
-            <ul>
-                {links}
-            </ul>
-        </div>
-    )
+	return (
+		<div className={menuStatus} id="menu">
+			<ul>
+				{links}
+			</ul>
+		</div>
+	)
 }

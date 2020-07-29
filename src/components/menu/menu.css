@@ -81,7 +81,7 @@
 
 #hambmenu.isopen span:nth-child(1) {
     top: 18px;
-    width: 0%;
+    width: 0;
     left: 50%;
     opacity: 0;
 }
@@ -114,12 +114,13 @@
     transition: transform 300ms;
     transition: transform 300ms, -webkit-transform 300ms;
     overflow-y: auto;
-    height: 80vh;
+    height: calc(87vh - 60px);
 }
 
 #menu ul, .actionMenuArea ul {
-    margin-top: 0px;
-    padding: 0px;
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
     list-style-type: none;
     text-align: left;
 }
@@ -128,8 +129,9 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.14);
 }
 
-#menu li a, .actionMenuArea li a {
+#menu li p, .actionMenuArea li p {
     color: #FFFFFF;
+    margin-bottom: 0;
 }
 
 #menu li:last-child {

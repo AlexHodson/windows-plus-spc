@@ -5,14 +5,14 @@
  * @param password the password entered by the user
  * @return {Promise<Response>} a promise containing the staff data
  */
-export const loginService = password => {
-    return fetch('http://localhost:4000/login', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({password: password})
-    })
-}
+const loginService = password => fetch('http://localhost:4000/login', {
+	'method': 'POST',
+	'mode': 'cors',
+	'headers': {
+		'Accept': 'application/json',
+		'Content-Type': 'application/json'
+	},
+	'body': JSON.stringify({ 'password': password })
+})
+
+export default loginService

@@ -8,7 +8,7 @@ exec < /dev/tty
 # The command which is piped into the 'git diff' command
 fileCommand=""
 # The list of any files that should be excluded from the console checker
-excludableFiles=("dependencies/pre-commit/*")
+excludableFiles=("dependencies/pre-commit/*" ".eslintrc.json" "package-lock.json")
 
 # Loops over every excludable file name
 for t in ${excludableFiles[@]}; do
@@ -17,8 +17,8 @@ for t in ${excludableFiles[@]}; do
 done
 
 # Test Strings
-consoleregexp='System.out.print'
-# consoleregexp="console."
+#consoleregexp='System.out.print'
+consoleregexp="console."
 # consoleregexp='print'
 
 # Add "-- . ':(exclude)[files]/'" at the end of each 'git diff' command to exclude that particular file/folder
