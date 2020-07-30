@@ -1,0 +1,15 @@
+.thead {
+    font-size: 14px;
+    font-family: Arial, serif;
+}
+
+.thead-blue {
+    background: #496e91;
+    color: #FFFFFF;
+}
+
+.table-cell {
+    font-size: 14px;
+    font-family: Arial, serif;
+    padding: 5px;
+}

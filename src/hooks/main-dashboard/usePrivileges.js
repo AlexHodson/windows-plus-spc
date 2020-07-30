@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {MainDashboardService} from "../../services/main-dashboard/MainDashboardService";
+import { useEffect, useState } from 'react'
+import retrievePrivileges from '../../services/main-dashboard/MainDashboardService'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
@@ -9,19 +9,21 @@ import {MainDashboardService} from "../../services/main-dashboard/MainDashboardS
  * @param userDetails the logged in user details
  * @return {{privileges: unknown}}
  */
-export function usePrivileges(initialPrivilegeState, userDetails) {
-    /**
-     * @description the privileges state member and setter method
-     */
-    const [privileges, setPrivileges] = useState(initialPrivilegeState)
+const usePrivileges = (initialPrivilegeState, userDetails) => {
+	/**
+	 * @description the privileges state member and setter method
+	 */
+	const [privileges, setPrivileges] = useState(initialPrivilegeState)
 
-    useEffect(() => {
-        new MainDashboardService().retrievePrivileges(userDetails)
-            .then(response => response.json())
-            .then(data => {
-                setPrivileges(data)
-            })
-    },[])
+	useEffect(() => {
+		retrievePrivileges(userDetails)
+			.then(response => response.json())
+			.then(data => {
+				setPrivileges(data)
+			})
+	}, [userDetails])
 
-    return {privileges}
+	return { privileges }
 }
+
+export default usePrivileges
