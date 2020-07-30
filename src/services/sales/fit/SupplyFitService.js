@@ -9,7 +9,7 @@ import FIT_TYPE from '../../../util/constants/FitType'
  * @return {Promise<Response>} a promise containing the new fit jobs
  */
 const retrieveNewJobs = (type, staffID) => fetch(`
-	http://localhost:4000/mainDashboard/privileges/${type}/${staffID}`, {
+	http://localhost:4000/sales/fit/new/${type}/${staffID}`, {
 	'method': 'GET',
 	'mode': 'cors',
 	'headers': {

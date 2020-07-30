@@ -722,7 +722,7 @@
       "error",
       {
         "newIsCap": true,
-        "capIsNewExceptionPattern": "^express.Router"
+        "capIsNewExceptions": ["express.Router", "sql.VarChar"]
       }
     ],
     // Require parentheses when invoking a constructor with no arguments

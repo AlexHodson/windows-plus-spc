@@ -31,13 +31,13 @@ const useNewFitJobRetrieval = type => {
 	const [tableRows, setTableRows] = useState([])
 
 	useEffect(() => {
-		retrieveNewFitJobs(type, userDetails.StaffId)
+		retrieveNewFitJobs(type, userDetails[0].StaffId)
 			.then(response => response.json())
 			.then(data => {
 				setTableHeaders(data)
 				setTableRows(data)
 			})
-	})
+	}, [type, userDetails])
 
 	return { tableHeaders, tableRows }
 }
