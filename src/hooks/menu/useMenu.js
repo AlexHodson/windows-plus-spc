@@ -6,10 +6,11 @@ import { useState } from 'react'
  * navigation
  * @param initialState the initial state of the menu
  * @param setUserDetails the setter method for the logged in user details
+ * @param loadArea the area click callback to be run
  * @return {{setOpen: Dispatch<React.SetStateAction<unknown>>, handleMenuToggle: handleMenuToggle, open: unknown,
  * handleLogOut: handleLogOut}}
  */
-const useMenu = (initialState, setUserDetails) => {
+const useMenu = (initialState, setUserDetails, loadArea) => {
 	/**
 	 * @description the menu state member which represents whether the menu is open and the setter method
 	 */
@@ -34,7 +35,11 @@ const useMenu = (initialState, setUserDetails) => {
 		setOpen(! open)
 	}
 
-	return { open, setOpen, handleLogOut, handleMenuToggle }
+	const handleLinkClick = target => {
+		loadArea(target)
+	}
+
+	return { open, setOpen, handleLogOut, handleMenuToggle, handleLinkClick }
 }
 
 export default useMenu

@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
-import usePrivileges from '../../hooks/main-dashboard/usePrivileges'
+import React, { useEffect, useState } from 'react'
 import useLoader from '../../hooks/loader/useLoader'
-import Menu from '../menu/Menu'
+import usePrivileges from '../../hooks/main-dashboard/usePrivileges'
 import Loader from '../loader/Loader'
+import Menu from '../menu/Menu'
+import AreaTemplate from './AreaTemplate'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
@@ -23,8 +24,20 @@ const MainDashboard = ({ userDetails, setUserDetails }) => {
 	 */
 	const { showLoader, setShowLoader } = useLoader(true)
 
+	const [selectedArea, setSelectedArea] = useState('Initial Load')
+
+	/**
+	 * @author Alex Hodson : it-alex@windows-plus.co.uk
+	 * @description loads an area, which is linked to the given string target, into the main dashboard template
+	 * @param target the section selected by the user to be loaded
+	 */
+	const loadArea = target => {
+		setSelectedArea(target)
+	}
+
 	useEffect(() => {
 		const empty = 0
+
 		if (privileges.length > empty) setShowLoader(false)
 	}, [privileges, setShowLoader])
 
@@ -33,10 +46,11 @@ const MainDashboard = ({ userDetails, setUserDetails }) => {
 			{showLoader && <Loader />}
 			<div className="d-flex justify-content-start">
 				<div>
-					{! showLoader && <Menu privileges={privileges} setUserDetails={setUserDetails} />}
+					{! showLoader &&
+					<Menu privileges={privileges} setUserDetails={setUserDetails} loadArea={loadArea} />}
 				</div>
 				<div>
-					<h3>Dashboard</h3>
+					<AreaTemplate selectedArea={selectedArea} />
 				</div>
 			</div>
 		</div>

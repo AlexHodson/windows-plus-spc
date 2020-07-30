@@ -6,15 +6,16 @@ import React from 'react'
  * which allow the user to navigate to different sections of the system
  * @param privileges the privileges associated with the logged in user
  * @param menuStatus whether the menu is currently open
+ * @param handleLinkClick a parent method which will run when a navigation link is clicked
  * @return {JSX.Element} the user interface which is ported int another component interface
  * @constructor
  */
-export default function MenuLinks({ privileges, menuStatus }) {
+export default function MenuLinks({ privileges, menuStatus, handleLinkClick }) {
 	/**
 	 * @description an array which contains the user interface nodes for the navigation links
 	 */
 	const links = privileges.map(link => (
-		<li key={link.columnName} className="cursor">
+		<li key={link.columnName} className="cursor" onClick={() => handleLinkClick(link.columnName)}>
 			<p>{link.columnName.replace('_', '').replace(/(?<lower>[a-z])(?<upper>[A-Z])/g, '$1 $2')}</p>
 		</li>
 	))
