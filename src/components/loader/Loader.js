@@ -1,5 +1,5 @@
 import React from 'react'
-import './loader.css'
+import '../../style/loader.css'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk

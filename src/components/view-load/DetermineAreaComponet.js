@@ -1,5 +1,5 @@
 import React from 'react'
-import NewExternalFitArea from '../sales/external/fit/new/NewExternalFitArea'
+import NewExternalFitArea from '../../views/sales/external/fit/new/NewExternalFitArea'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk

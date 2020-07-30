@@ -2,7 +2,7 @@ import React from 'react'
 import { FaSignOutAlt } from 'react-icons/fa'
 import useMenu from '../../hooks/menu/useMenu'
 
-import './menu.css'
+import '../../style/menu.css'
 
 import MenuLinks from './MenuLink'
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useLoader from '../../hooks/loader/useLoader'
 import usePrivileges from '../../hooks/main-dashboard/usePrivileges'
-import Loader from '../loader/Loader'
-import Menu from '../menu/Menu'
+import Loader from '../../components/loader/Loader'
+import Menu from '../../components/menu/Menu'
 import AreaTemplate from './AreaTemplate'
 
 /**
@@ -49,7 +49,7 @@ const MainDashboard = ({ userDetails, setUserDetails }) => {
 					{! showLoader &&
 					<Menu privileges={privileges} setUserDetails={setUserDetails} loadArea={loadArea} />}
 				</div>
-				<div>
+				<div className="w-100 px-3">
 					<AreaTemplate selectedArea={selectedArea} />
 				</div>
 			</div>

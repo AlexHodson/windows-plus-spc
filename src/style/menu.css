@@ -10,6 +10,7 @@
 .menuWrap {
     display: block;
     position: fixed;
+    background-color: #24334e;
     text-align: center;
     width: 74px;
     transition: width 300ms;

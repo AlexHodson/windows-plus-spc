@@ -486,8 +486,7 @@
     "array-element-newline": [
       "error",
       {
-        "multiline": true,
-        "minItems": 3
+        "multiline": true
       }
     ],
     // Disallow or enforce spaces inside of blocks after opening block and before closing block

@@ -1,5 +1,5 @@
 import React from 'react'
-import determineAreaComponent from './DetermineAreaComponet'
+import determineAreaComponent from '../../components/view-load/DetermineAreaComponet'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
@@ -16,7 +16,7 @@ const AreaTemplate = ({ selectedArea = 'Initial Load' }) => {
 	const area = determineAreaComponent(selectedArea)
 
 	return (
-		<div>{ area }</div>
+		<>{ area }</>
 	)
 }
 export default AreaTemplate

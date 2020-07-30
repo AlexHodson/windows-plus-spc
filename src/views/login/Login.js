@@ -41,7 +41,7 @@ export default function Login({ setUserDetails }) {
 				<div className="w-100">
 					<h3>Welcome to the Windows Plus SPC</h3>
 					<div className="form-group">
-						<label htmlFor="password">Password</label>
+						<label htmlFor="password" data-testid="password">Password</label>
 						<input
 							id="password"
 							name="password"
