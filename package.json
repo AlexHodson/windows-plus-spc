@@ -27,11 +27,12 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "electron": "cross-env NODE_ENV=dev nodemon --exec \"\"electron .\"\"",
+    "electron": "cross-env NODE_ENV=dev nodemon --exec \"electron .",
     "react-start": "react-scripts start",
     "server": "node server/Server.mjs",
     "start": "cross-env BROWSER=none npm run react-start",
-    "lint": "eslint",
+    "lint": "eslint --max-warnings 0 **/*.js",
+    "lint-fix": "eslint --fix **/*.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

@@ -24,18 +24,16 @@ export default function Login({ setUserDetails }) {
 			const data = loginService(value)
 
 			resolve(data)
-		}).then(response => response.json()).
-			then(data => {
-				setUserDetails(data)
-			})
+		}).then(response => response.json())
+		  .then(data => {
+			  setUserDetails(data)
+		  })
 	}
 
 	/**
 	 * @description the hook members exported by the {@link useHandleForm} hook
 	 */
-	const {
-		handleChange, handleSubmit
-	} = useHandleForm(null, afterSubmit)
+	const { handleChange, handleSubmit } = useHandleForm(null, afterSubmit)
 
 	return (
 		<div id="loginFormContainer">
@@ -53,7 +51,7 @@ export default function Login({ setUserDetails }) {
 							onChange={handleChange}
 						/>
 					</div>
-					<button type="button" className="btn btn-primary btn-block">Submit</button>
+					<button type="submit" className="btn btn-primary btn-block">Submit</button>
 				</div>
 			</form>
 		</div>

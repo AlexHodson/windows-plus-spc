@@ -33,9 +33,7 @@ const useHandleForm = (initialState, afterSubmit) => {
 		afterSubmit(state)
 	}
 
-	return {
-		state, handleChange, handleSubmit
-	}
+	return { state, handleChange, handleSubmit }
 }
 
 export default useHandleForm

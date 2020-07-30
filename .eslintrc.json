@@ -819,7 +819,7 @@
         "object-curly-newline": [
             "warn",
             {
-                "minProperties": 2
+                "multiline": true
             }
         ],
         // Enforce consistent spacing inside braces

@@ -9,9 +9,7 @@ import React from 'react'
  * @return {JSX.Element} the user interface which is ported int another component interface
  * @constructor
  */
-export default function MenuLinks({
-	privileges, menuStatus
-}) {
+export default function MenuLinks({ privileges, menuStatus }) {
 	/**
 	 * @description an array which contains the user interface nodes for the navigation links
 	 */

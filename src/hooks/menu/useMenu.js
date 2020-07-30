@@ -34,9 +34,7 @@ const useMenu = (initialState, setUserDetails) => {
 		setOpen(! open)
 	}
 
-	return {
-		open, setOpen, handleLogOut, handleMenuToggle
-	}
+	return { open, setOpen, handleLogOut, handleMenuToggle }
 }
 
 export default useMenu

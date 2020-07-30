@@ -13,9 +13,7 @@ import Loader from '../loader/Loader'
  * @return {JSX.Element} the user interface which is parted into another component interface
  * @constructor
  */
-const MainDashboard = ({
-	userDetails, setUserDetails
-}) => {
+const MainDashboard = ({ userDetails, setUserDetails }) => {
 	/**
 	 * @description the hook members exported by the {@link usePrivileges} hook
 	 */
@@ -23,9 +21,7 @@ const MainDashboard = ({
 	/**
 	 * @description the hook members exported by the {@link useLoader} hook
 	 */
-	const {
-		showLoader, setShowLoader
-	} = useLoader(true)
+	const { showLoader, setShowLoader } = useLoader(true)
 
 	useEffect(() => {
 		const empty = 0

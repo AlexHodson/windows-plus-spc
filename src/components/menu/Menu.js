@@ -1,10 +1,10 @@
 import React from 'react'
 import { FaSignOutAlt } from 'react-icons/fa'
-
-import MenuLinks from './MenuLink'
 import useMenu from '../../hooks/menu/useMenu'
 
 import './menu.css'
+
+import MenuLinks from './MenuLink'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
@@ -15,15 +15,11 @@ import './menu.css'
  * @return {JSX.Element} the user interface which is ported into another component interface
  * @constructor
  */
-export default function Menu({
-	setUserDetails, privileges
-}) {
+export default function Menu({ setUserDetails, privileges }) {
 	/**
 	 * @description the hook members exported by the {@link useMenu} hook
 	 */
-	const {
-		open, handleLogOut, handleMenuToggle
-	} = useMenu(false, setUserDetails)
+	const { open, handleLogOut, handleMenuToggle } = useMenu(false, setUserDetails)
 
 	/**
 	 * @description the class name which is added to the user interface elements
@@ -54,7 +50,7 @@ export default function Menu({
 								<p className={`d-flex align-items-center 
 									${open ? 'justify-content-around' : 'justify-content-center'}`}
 								>
-									{open && <>Log Out</> }
+									{open && <>Log Out</>}
 									<FaSignOutAlt />
 								</p>
 							</li>

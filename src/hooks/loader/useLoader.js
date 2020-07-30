@@ -12,8 +12,6 @@ const useLoader = initialState => {
 	 */
 	const [showLoader, setShowLoader] = useState(initialState)
 
-	return {
-		showLoader, setShowLoader
-	}
+	return { showLoader, setShowLoader }
 }
 export default useLoader
