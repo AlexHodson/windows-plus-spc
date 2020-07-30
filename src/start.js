@@ -6,7 +6,7 @@ const isDev = require('electron-is-dev')
 require('electron-reload')
 const path = require('path')
 
-let mainWindow
+let mainWindow = null
 
 /**
  * Creates the main window which is displayed on window activation

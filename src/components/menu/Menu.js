@@ -1,10 +1,9 @@
 import React from 'react'
 import { FaSignOutAlt } from 'react-icons/fa'
 import useMenu from '../../hooks/menu/useMenu'
+import MenuLinks from './MenuLink'
 
 import '../../style/menu.css'
-
-import MenuLinks from './MenuLink'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
@@ -16,11 +15,11 @@ import MenuLinks from './MenuLink'
  * @return {JSX.Element} the user interface which is ported into another component interface
  * @constructor
  */
-export default function Menu({ setUserDetails, privileges, loadArea }) {
+export default function Menu({ setDetails, privileges, loadArea }) {
 	/**
 	 * @description the hook members exported by the {@link useMenu} hook
 	 */
-	const { open, handleLogOut, handleMenuToggle, handleLinkClick } = useMenu(false, setUserDetails, loadArea)
+	const { open, handleLogOut, handleMenuToggle, handleLinkClick } = useMenu(false, setDetails, loadArea)
 
 	/**
 	 * @description the class name which is added to the user interface elements

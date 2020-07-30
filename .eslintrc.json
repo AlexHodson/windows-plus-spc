@@ -432,10 +432,7 @@
     // https://eslint.org/docs/rules/init-declarations
     "init-declarations": [
       "error",
-      "never",
-      {
-        "ignoreForLoopInit": true
-      }
+      "always"
     ],
     // Disallow deleting variables
     // https://eslint.org/docs/rules/no-delete-var

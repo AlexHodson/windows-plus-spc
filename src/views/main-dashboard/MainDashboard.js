@@ -10,11 +10,11 @@ import AreaTemplate from './AreaTemplate'
  * @description the {@link MainDashboard} method provides the user interface and functionality for displaying the
  * navigation menu and an area to dynamically load the different sections into
  * @param userDetails the logged in user details
- * @param setUserDetails a state setter which updates the logged in user details
+ * @param setDetails a state setter which updates the logged in user details
  * @return {JSX.Element} the user interface which is parted into another component interface
  * @constructor
  */
-const MainDashboard = ({ userDetails, setUserDetails }) => {
+const MainDashboard = ({ userDetails, setDetails }) => {
 	/**
 	 * @description the hook members exported by the {@link usePrivileges} hook
 	 */
@@ -24,6 +24,9 @@ const MainDashboard = ({ userDetails, setUserDetails }) => {
 	 */
 	const { showLoader, setShowLoader } = useLoader(true)
 
+	/**
+	 * @description the hook members used to stored the user section selection
+	 */
 	const [selectedArea, setSelectedArea] = useState('Initial Load')
 
 	/**
@@ -47,7 +50,7 @@ const MainDashboard = ({ userDetails, setUserDetails }) => {
 			<div className="d-flex justify-content-start">
 				<div>
 					{! showLoader &&
-					<Menu privileges={privileges} setUserDetails={setUserDetails} loadArea={loadArea} />}
+					<Menu privileges={privileges} setDetails={setDetails} loadArea={loadArea} />}
 				</div>
 				<div className="w-100 px-3">
 					<AreaTemplate selectedArea={selectedArea} />
