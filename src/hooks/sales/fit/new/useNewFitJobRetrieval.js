@@ -1,6 +1,7 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import retrieveNewFitJobs from '../../../../services/sales/fit/SupplyFitService'
 import { Context } from '../../../context/userDetalisContext'
+import useDataGeneration from '../../../table/useDataGeneration'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
@@ -21,36 +22,7 @@ const useNewFitJobRetrieval = type => {
 	 */
 	const { userDetails } = user
 
-	/**
-	 * @description the hook members which store the table headers and a method for updating them
-	 */
-	const [tableHeaders, setTableHeaders] = useState([])
-	/**
-	 * @description the hook members which store the table rows and a method for updating them
-	 */
-	const [tableRows, setTableRows] = useState([])
-
-	/**
-	 * @author Alex Hodson : it-alex@windows-plus.co.uk
-	 * @description identifies the header values and table row values using the data given
-	 * @param data the data retrieved from the database
-	 */
-	const determineTableData = data => {
-		const empty = 0
-		const rows = []
-
-		data.forEach(row => {
-			if (tableHeaders.length === empty) {
-				const headers = Object.keys(row)
-				headers.push('Open')
-				setTableHeaders(headers)
-			}
-
-			rows.push(row)
-		})
-
-		setTableRows(rows)
-	}
+	const { tableHeaders, tableRows, determineTableData } = useDataGeneration()
 
 	useEffect(() => {
 		retrieveNewFitJobs(type, userDetails[0].StaffId)

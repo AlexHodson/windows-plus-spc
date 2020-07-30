@@ -33,7 +33,7 @@ const NewExternalFitArea = () => {
 			{ showLoader && <Loader /> }
 			{! showLoader && (
 				<>
-					<h3>New External Supply Fit</h3>
+					<h3>New External Supply Fit Jobs</h3>
 					<>
 						<Table tableHeaders={tableHeaders} tableRows={tableRows} />
 					</>
