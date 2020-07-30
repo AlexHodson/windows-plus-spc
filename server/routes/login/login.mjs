@@ -1,6 +1,6 @@
 import express from 'express'
 import sql from 'mssql'
-import { generateCall } from '../../util/ConnectionProperty.mjs'
+import generateCall from '../../util/ConnectionProperty.mjs'
 
 const router = express.Router()
 

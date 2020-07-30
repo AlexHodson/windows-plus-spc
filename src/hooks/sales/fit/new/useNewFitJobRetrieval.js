@@ -30,12 +30,33 @@ const useNewFitJobRetrieval = type => {
 	 */
 	const [tableRows, setTableRows] = useState([])
 
+	/**
+	 * @author Alex Hodson : it-alex@windows-plus.co.uk
+	 * @description identifies the header values and table row values using the data given
+	 * @param data the data retrieved from the database
+	 */
+	const determineTableData = data => {
+		const empty = 0
+		const rows = []
+
+		data.forEach(row => {
+			if (tableHeaders.length === empty) {
+				const headers = Object.keys(row)
+				headers.push('Open')
+				setTableHeaders(headers)
+			}
+
+			rows.push(row)
+		})
+
+		setTableRows(rows)
+	}
+
 	useEffect(() => {
 		retrieveNewFitJobs(type, userDetails[0].StaffId)
 			.then(response => response.json())
 			.then(data => {
-				setTableHeaders(data)
-				setTableRows(data)
+				determineTableData(data)
 			})
 	}, [type, userDetails])
 

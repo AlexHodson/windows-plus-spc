@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Loader from '../../../../../components/loader/Loader'
 import Table from '../../../../../components/table/Table'
 import useLoader from '../../../../../hooks/loader/useLoader'
@@ -16,13 +16,18 @@ const NewExternalFitArea = () => {
 	/**
 	 * @description the hook members exported by the {@link useLoader} hook
 	 */
-	const { showLoader } = useLoader(true)
+	const { showLoader, setShowLoader } = useLoader(true)
 
 	/**
 	 * @description the hook members export by the {@link useNewFitJobRetrieval} hook
 	 */
 	const { tableHeaders, tableRows } = useNewFitJobRetrieval(FIT_TYPE.EXTERNAL)
 
+	useEffect(() => {
+		const empty = 0
+
+		if (tableHeaders.length > empty) setShowLoader(false)
+	})
 	return (
 		<>
 			{ showLoader && <Loader /> }
