@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import Loader from '../../../../../components/loader/Loader'
+import EmptyTable from '../../../../../components/display/EmptyTable'
 import SectionHeader from '../../../../../components/section-header/SectionHeader'
 import Table from '../../../../../components/table/Table'
 import useLoader from '../../../../../hooks/loader/useLoader'
@@ -29,10 +30,13 @@ const NewExternalFitArea = () => {
 	 * @description the hook members exported by the {@link useTableFilter} hook
 	 */
 	const { filterTable, filterRows, setFilterRows } = useTableFilter(['Sales Number'], tableRows)
+	/**
+	 * @description a number which represents anything which is empty
+	 * @type {number}
+	 */
+	const empty = 0
 
 	useEffect(() => {
-		const empty = 0
-
 		if (tableHeaders.length > empty) {
 			setShowLoader(false)
 
@@ -56,8 +60,13 @@ const NewExternalFitArea = () => {
 						/>
 					</>
 					<>
-						<h4>New Jobs</h4>
-						<Table tableHeaders={tableHeaders} tableRows={filterRows} />
+						{ filterRows.length > empty && (
+							<>
+								<h4>New Jobs</h4>
+								<Table tableHeaders={tableHeaders} tableRows={filterRows} />
+							</>
+						) }
+						{ filterRows.length === empty && <EmptyTable /> }
 					</>
 				</>
 			)}

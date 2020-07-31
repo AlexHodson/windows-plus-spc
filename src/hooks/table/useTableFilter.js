@@ -10,8 +10,16 @@ import { useState } from 'react'
  * @return {{setFilterRows: Dispatch<React.SetStateAction<*[]>>, filterTable: filterTable, filterRows: *[]}}
  */
 const useTableFilter = (tableColumns, tableRows = []) => {
+	/**
+	 * @description the filter row state member which contains the filtered table rows and a setter
+	 */
 	const [filterRows, setFilterRows] = useState(tableRows)
 
+	/**
+	 * @author Alex Hodson : it-alex@windows-plus.co.uk
+	 * @description determines which rows in the table data should be displayed based on the search terms
+	 * @param searchTerm the search term entered by the user
+	 */
 	const filterTable = searchTerm => {
 		const notExist = -1
 		const data = tableRows.filter(element => {
