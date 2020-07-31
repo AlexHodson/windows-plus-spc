@@ -1,0 +1,10 @@
+.control-icon {
+    position: absolute;
+    bottom: .5rem;
+    right: 1rem;
+}
+
+.button-icon {
+    text-align: right;
+    padding: 0 5px;
+}
