@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from 'react'
 
 /**
  * @author Alex Hodson : it-alex@windows-plus.co.uk
@@ -7,31 +7,38 @@ import React, { useState } from "react";
  * @param afterSubmit a callback method for when the form is submitted
  * @return {{handleSubmit: handleSubmit, handleChange: handleChange, state: unknown}}
  */
-export function useHandleForm(initialState, afterSubmit) {
-    /**
-     * @description the form entry state member and a setter method
-     */
-    const [state, setState] = useState(initialState)
+const useHandleForm = (initialState, afterSubmit) => {
+	/**
+	 * @description the form entry state member and a setter method
+	 */
+	const [state, setState] = useState(initialState)
 
-    /**
-     * @author Alex Hodson : it-alex@windows-plus.co.uk
-     * @description sets the value of the form field state when the user enters information into the entry node
-     * @param e the element calling the method
-     */
-    const handleChange = e => {
-        setState(e.target.value)
-    }
+	/**
+	 * @author Alex Hodson : it-alex@windows-plus.co.uk
+	 * @description sets the value of the form field state when the user enters information into the entry node
+	 * @param event the element calling the method
+	 * @param callback a callback which should be called if defined
+	 */
+	const handleChange = (event, callback = null) => {
+		setState(event.target.value)
 
-    /**
-     * @author Alex Hodson : it-alex@windows-plus.co.uk
-     * @description prevents the page from reloading when a form is submitted and the defined callback is called
-     * @param e the element calling the method
-     */
-    const handleSubmit = e => {
-        e.preventDefault()
+		if (callback === null) return
 
-        afterSubmit(state)
-    }
+		callback(event.target.value)
+	}
 
-    return { state, handleChange, handleSubmit }
+	/**
+	 * @author Alex Hodson : it-alex@windows-plus.co.uk
+	 * @description prevents the page from reloading when a form is submitted and the defined callback is called
+	 * @param event the element calling the method
+	 */
+	const handleSubmit = event => {
+		event.preventDefault()
+
+		afterSubmit(state)
+	}
+
+	return { state, handleChange, handleSubmit }
 }
+
+export default useHandleForm

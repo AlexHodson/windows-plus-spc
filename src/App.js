@@ -1,13 +1,13 @@
-import React from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import React from 'react'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './app.css'
 
-import Root from './components/root/Root'
+import Root from './views/root/Root'
 
 function App() {
-    return (
-        <Root />
-    );
+	return (
+		<Root />
+	)
 }
 
-export default App;
+export default App

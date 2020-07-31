@@ -1,17 +1,16 @@
-'use strict';
 
-import sql from "mssql";
+import sql from 'mssql'
 
 /**
  * @description an {@link Object} containing the connection details for the database
  * @type {{server: string, password: string, database: string, port: number, user: string}}
  */
 const config = {
-    user: 'Kestrel',
-    password: 'BirdieLover7*',
-    server: 'DBaseServer1',
-    port: 49272,
-    database: 'Vulture'
+	'user': 'Kestrel',
+	'password': 'BirdieLover7*',
+	'server': 'DBaseServer1',
+	'port': 49272,
+	'database': 'Falcon'
 }
 
 /**
@@ -22,14 +21,14 @@ const config = {
  * @return {Promise<any>} a promise containing the stored procedure results
  */
 const connect = async (name, parameters) => {
-    const connection = await sql.connect(config);
+	const connection = await sql.connect(config)
 
-    const request = await connection.request()
-    parameters.forEach(param => {
-        request.input(param.name, param.type, param.value)
-    })
+	const request = await connection.request()
+	parameters.forEach(param => {
+		request.input(param.name, param.type, param.value)
+	})
 
-    return await request.execute(name)
+	return request.execute(name)
 }
 
 /**
@@ -38,6 +37,6 @@ const connect = async (name, parameters) => {
  * @param parameters the stored procedure parameters
  * @return {Promise<*>} a promise containing the stored procedure results
  */
-export const generateCall = async (name, parameters) => {
-    return await connect(name, parameters)
-}
+const generateCall = (name, parameters) => connect(name, parameters)
+
+export default generateCall
