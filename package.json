@@ -27,10 +27,11 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
+    "start": "npm-run-all --parallel \"react\" \"electron\" \"server\"",
     "electron": "cross-env NODE_ENV=dev nodemon --exec \"electron .",
     "react-start": "react-scripts start",
     "server": "nodemon server/Server.mjs",
-    "start": "cross-env BROWSER=none npm run react-start",
+    "react": "cross-env BROWSER=none npm run react-start",
     "lint": "eslint --max-warnings 0 **/*.js",
     "lint-fix": "eslint --fix **/*.js",
     "build": "react-scripts build",
@@ -66,6 +67,7 @@
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.0",
     "commitizen": "^4.1.2",
+    "concurrently": "^5.2.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.2.0",
@@ -81,6 +83,8 @@
     "express": "^4.17.1",
     "mssql": "^6.2.1",
     "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "parallelshell": "^3.0.2",
     "react-icons": "^3.10.0",
     "react-router-dom": "^5.2.0",
     "typescript": "^3.9.7"

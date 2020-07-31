@@ -22,17 +22,29 @@ const useNewFitJobRetrieval = type => {
 	 */
 	const { userDetails } = user
 
-	const { tableHeaders, tableRows, determineTableData } = useDataGeneration()
+	/**
+	 * @description the exported members from the {@link useDataGeneration} hook
+	 */
+	const { tableHeaders, tableRows, setTableRows, determineTableData } = useDataGeneration()
 
-	useEffect(() => {
+	/**
+	 * @author Alex Hodson : it-alex@windows-plus.co.uk
+	 * @description the {@link retrieveData} method makes an API call through the {@link retrieveNewFitJobs} method
+	 * which retrieves all new fit jobs, of a given type, for the logged in user. Once the data has been retrieved.
+	 * The table header and row data is generated using the {@link useDataGeneration} hook method,
+	 * {@link determineTableData}.
+	 */
+	const retrieveData = () => {
 		retrieveNewFitJobs(type, userDetails[0].StaffId)
 			.then(response => response.json())
 			.then(data => {
 				determineTableData(data)
 			})
-	}, [type, userDetails])
+	}
 
-	return { tableHeaders, tableRows }
+	useEffect(retrieveData, [])
+
+	return { tableHeaders, tableRows, setTableRows, retrieveData }
 }
 
 export default useNewFitJobRetrieval

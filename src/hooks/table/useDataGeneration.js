@@ -38,7 +38,7 @@ const useDataGeneration = () => {
 		setTableRows(rows)
 	}
 
-	return { tableHeaders, tableRows, determineTableData }
+	return { tableHeaders, tableRows, setTableRows, determineTableData }
 }
 
 export default useDataGeneration
