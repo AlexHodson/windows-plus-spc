@@ -49,7 +49,7 @@ const MainDashboard = ({ userDetails, setDetails }) => {
 			{showLoader && <Loader />}
 			<div className="d-flex justify-content-start">
 				<div>
-					{! showLoader &&
+					{!showLoader &&
 					<Menu privileges={privileges} setDetails={setDetails} loadArea={loadArea} />}
 				</div>
 				<div className="w-100 px-3">

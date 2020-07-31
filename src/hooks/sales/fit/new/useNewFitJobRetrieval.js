@@ -25,7 +25,7 @@ const useNewFitJobRetrieval = type => {
 	/**
 	 * @description the exported members from the {@link useDataGeneration} hook
 	 */
-	const { tableHeaders, tableRows, determineTableData } = useDataGeneration()
+	const { tableHeaders, tableRows, setTableRows, determineTableData } = useDataGeneration()
 
 	/**
 	 * @author Alex Hodson : it-alex@windows-plus.co.uk
@@ -42,11 +42,9 @@ const useNewFitJobRetrieval = type => {
 			})
 	}
 
-	useEffect(() => {
-		retrieveData()
-	}, [type, userDetails])
+	useEffect(retrieveData, [])
 
-	return { tableHeaders, tableRows, retrieveData }
+	return { tableHeaders, tableRows, setTableRows, retrieveData }
 }
 
 export default useNewFitJobRetrieval

@@ -32,7 +32,7 @@ const useMenu = (initialState, setUserDetails, loadArea) => {
 	 */
 	const handleMenuToggle = event => {
 		event.stopPropagation()
-		setOpen(! open)
+		setOpen(!open)
 	}
 
 	const handleLinkClick = target => {

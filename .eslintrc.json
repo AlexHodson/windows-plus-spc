@@ -933,11 +933,7 @@
       1,
       {
         "words": true,
-        "nonwords": true,
-        "overrides": {
-          "--": false,
-          "++": false
-        }
+        "nonwords": false
       }
     ],
     // Requires or disallows a whitespace (space or tab) beginning a comment

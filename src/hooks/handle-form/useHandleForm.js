@@ -17,9 +17,14 @@ const useHandleForm = (initialState, afterSubmit) => {
 	 * @author Alex Hodson : it-alex@windows-plus.co.uk
 	 * @description sets the value of the form field state when the user enters information into the entry node
 	 * @param event the element calling the method
+	 * @param callback a callback which should be called if defined
 	 */
-	const handleChange = event => {
+	const handleChange = (event, callback = null) => {
 		setState(event.target.value)
+
+		if (callback === null) return
+
+		callback(event.target.value)
 	}
 
 	/**
