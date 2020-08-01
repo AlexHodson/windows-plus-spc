@@ -18,6 +18,8 @@ const createWindow = () => {
 		'webPreferences': { 'nodeIntegration': true }
 	})
 
+	console.log('HERE')
+
 	mainWindow.loadURL(isDev ?
 		'http://localhost:3000' :
 		`file://${path.join(__dirname, '../build/index.html')}`)
