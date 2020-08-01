@@ -2,29 +2,51 @@
   "name": "electron-react-typescript-app",
   "version": "0.1.0",
   "private": true,
-  "main": "src/start.js",
-  "build": {
-    "appId": "some.id.ofyours",
-    "directories": {
-      "buildResources": "assets"
-    },
-    "win": {
-      "category": "your.app.category.type",
-      "iconUrl": "path-to-icon.png"
-    },
-    "mac": {
-      "category": "your.app.category.type",
-      "iconUrl": "path-to-icon.png"
-    }
-  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "electron": "^9.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "async": "^3.2.0",
+    "babel-eslint": "^10.1.0",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.0",
+    "commitizen": "^4.1.2",
+    "concurrently": "^5.2.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "cz-conventional-changelog": "^3.2.0",
+    "electron": "^9.1.1",
+    "electron-builder": "^22.8.0",
+    "electron-is-dev": "^1.2.0",
+    "electron-reload": "^1.5.0",
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "express": "^4.17.1",
+    "mssql": "^6.2.1",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "parallelshell": "^3.0.2",
+    "react-icons": "^3.10.0",
+    "react-router-dom": "^5.2.0",
+    "typescript": "^3.9.7"
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
+  "build": {
+    "publish": {
+      "provider": "github"
+    }
   },
   "scripts": {
     "start": "npm-run-all --parallel \"react\" \"electron\" \"server\"",
@@ -32,12 +54,15 @@
     "react-start": "react-scripts start",
     "server": "nodemon server/Server.mjs",
     "react": "cross-env BROWSER=none npm run react-start",
-    "lint": "eslint --max-warnings 0 **/*.js",
-    "lint-fix": "eslint --fix **/*.js",
-    "build": "react-scripts build",
+    "lint": "eslint --ignore-path config/.eslintignore --max-warnings 0 **/*.js",
+    "lint-fix": "eslint --ignore-path config/.eslintignore --fix **/*.js",
+    "build": "react-scripts build && electron-builder",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cz": "sh dependencies/pre-commit/launch.sh"
+    "cz": "sh dependencies/pre-commit/launch.sh",
+    "package": "electron-builder build --mac --win -c.extraMetadata.main=build/electron/main.js --publish never",
+    "electron-pack": "npm run build --em.main=build/electron.js",
+    "preelectron-pack": "npm build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,35 +83,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^9.1.1",
-    "@commitlint/config-conventional": "^9.1.1",
-    "async": "^3.2.0",
-    "babel-eslint": "^10.1.0",
-    "body-parser": "^1.19.0",
-    "bootstrap": "^4.5.0",
-    "commitizen": "^4.1.2",
-    "concurrently": "^5.2.0",
-    "cors": "^2.8.5",
-    "cross-env": "^7.0.2",
-    "cz-conventional-changelog": "^3.2.0",
-    "electron-builder": "^22.7.0",
-    "electron-is-dev": "^1.2.0",
-    "electron-reload": "^1.5.0",
-    "eslint": "^7.5.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.5",
-    "eslint-plugin-react-hooks": "^4.0.8",
-    "express": "^4.17.1",
-    "mssql": "^6.2.1",
-    "nodemon": "^2.0.4",
-    "npm-run-all": "^4.1.5",
-    "parallelshell": "^3.0.2",
-    "react-icons": "^3.10.0",
-    "react-router-dom": "^5.2.0",
-    "typescript": "^3.9.7"
   }
 }
