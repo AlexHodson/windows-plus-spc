@@ -40,7 +40,7 @@ export default function Login({ setUserDetails }) {
 			<form onSubmit={handleSubmit} id="loginForm" className="d-flex justify-content-center align-items-center">
 				<div className="w-100">
 					<h3>Welcome to the Windows Plus SPC</h3>
-					<p>Version 0.6.0</p>
+					<p>Version 0.7.0</p>
 					<div className="form-group">
 						<label htmlFor="password" data-testid="password">Password</label>
 						<input
