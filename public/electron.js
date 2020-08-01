@@ -1,6 +1,6 @@
 const electron = require('electron')
 
-const { app } = electron
+const { app, ipcMain } = electron
 const { BrowserWindow } = electron
 const isDev = require('electron-is-dev')
 require('electron-reload')
@@ -31,7 +31,10 @@ const createWindow = () => {
 /**
  * An event that is emitted once electron has finished initialising
  */
-app.on('ready', createWindow)
+app.on('ready', () => {
+	createWindow()
+	autoUpdater.checkForUpdatesAndNotify()
+})
 
 /**
  * An event that is emitted on all windows have been closed
@@ -54,7 +57,7 @@ autoUpdater.on('update-downloaded', () => {
 	mainWindow.webContents.send('update_downloaded')
 })
 
-mainWindow.once('ready-to-show', () => {
+app.on('ready-to-show', () => {
 	autoUpdater.checkForUpdatesAndNotify()
 })
 
