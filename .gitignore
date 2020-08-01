@@ -112,6 +112,7 @@ fabric.properties
 # production
 /build
 /dist
+electron-builder.yml
 
 # misc
 .DS_Store
